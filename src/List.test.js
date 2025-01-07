@@ -2,7 +2,12 @@ import { render, screen } from '@testing-library/react';
 import List from './List';
 
 test('Component List', () => {
-  render(<List />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+    it("render items", () => {
+        const people = ['john', 'bob', 'jane'];
+        render(<List items={people} />)
+        const itemlist = screen.getAllByRole('listitem')
+        expect(itemlist).toHaveLength(people.length)
+    })
+    // const linkElement = screen.getByText(/learn react/i);
+    // expect(linkElement).toBeInTheDocument();
 });
